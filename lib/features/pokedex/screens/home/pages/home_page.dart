@@ -7,10 +7,15 @@ import '../../../../../common/models/pokemon.dart';
 
 
 class HomePage extends StatelessWidget {
-const HomePage({ Key? key, required this.list, required this.onItemTap}) : super(key: key);
+const HomePage({
+  Key? key, 
+  required this.list, 
+  required this.onItemTap}) : super(key: key);
 
   final List<Pokemon> list;
   final Function(String, DetailArguments) onItemTap;
+ 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,17 +36,17 @@ const HomePage({ Key? key, required this.list, required this.onItemTap}) : super
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: 10), 
-              child: IconButton(onPressed: () {}, icon: Icon(Icons.menu, color: Colors.black,)))
+              child: IconButton(onPressed: () {}, icon: const Icon(Icons.menu, color: Colors.black,)))
           ],
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24),
+        padding: const EdgeInsets.symmetric(horizontal: 24),
         child: GridView.count(
           crossAxisCount: 2,
           crossAxisSpacing: 12,
           mainAxisSpacing: 12,
           
-          children: list.map((e) => PokemonItemWidget(pokemon: e, onTap: onItemTap,)).toList(),
+          children: list.map((e) => PokemonItemWidget(pokemon: e, onTap: onItemTap, index: list.indexOf(e))).toList(),
         ),
       ),
     );

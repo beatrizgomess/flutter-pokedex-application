@@ -8,12 +8,14 @@ class DetailPage extends StatelessWidget {
     Key? key, 
     required this.pokemon, 
     required this.list, 
-    required this.onBack}) : super(key: key);
+    required this.onBack, required this.controller, required this.onChangePokemon}) : super(key: key);
+
+
     final Pokemon pokemon;
     final List<Pokemon> list;
     final VoidCallback onBack;
-
-    
+    final PageController controller;
+    final ValueChanged<Pokemon> onChangePokemon;
 
 
   @override
@@ -25,7 +27,7 @@ class DetailPage extends StatelessWidget {
             pokemon: pokemon, 
             onBack: onBack,
             ),
-            DetailListWidget(pokemon: pokemon, list: list,)
+            DetailListWidget(pokemon: pokemon, list: list, controller: controller, onChangePokemon: onChangePokemon,)
         ],
         ),
     );
